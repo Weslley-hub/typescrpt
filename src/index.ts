@@ -1,15 +1,18 @@
 import express from "express";
 
 import { AppDataSource } from "./data-source";
+import routes from "./routes";
 
 AppDataSource.initialize().then(() => {
-    const app = express()
+	const app = express();
 
-    app.use(express.json())
+	app.use(express.json());
 
-    app.get('/', (req, res)=> {
-        return res.json('Sucesso')
-    })
+	app.use(routes);
 
-    return app.listen(process.env.PORT)
-})
+	app.get("/", (req, res)=> {
+		return res.json("Sucesso, Controllers");
+	});
+
+	return app.listen(process.env.PORT);
+});
