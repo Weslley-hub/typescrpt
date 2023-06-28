@@ -4,14 +4,6 @@ import { ChannelController } from "./controllers/ChannelController";
 
 const routes = Router();
 
-routes.get("/", (req, res) => {
-    
-	throw new Error("Error lançado dentro try");
-
-	return res.json("ok");
-
-});
-
 routes.get("/api/user", new UserController().listUser);
 routes.get("/api/user/channel", new UserController().listChannel);
 routes.get("/api/user/channel/videos", new ChannelController().listChannelVideos);
