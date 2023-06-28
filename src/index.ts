@@ -2,6 +2,7 @@ import express from "express";
 
 import { AppDataSource } from "./data-source";
 import routes from "./routes";
+import { middlewareError } from "./middlewares/error";
 
 AppDataSource.initialize().then(() => {
 	const app = express();
@@ -10,9 +11,7 @@ AppDataSource.initialize().then(() => {
 
 	app.use(routes);
 
-	app.get("/", (req, res)=> {
-		return res.json("Sucesso, Controllers");
-	});
+	app.use(middlewareError);
 
 	return app.listen(process.env.PORT);
 });
