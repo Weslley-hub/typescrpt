@@ -7,7 +7,7 @@
 - JWT
 - ESlint
 - Docker-Compose
-- Banco de dados PostgreSQL
+- Banco de dados PostgreSQL ou SQLserver
 - TypeORM
 
 ## Ferramentas
