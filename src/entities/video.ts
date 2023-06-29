@@ -6,13 +6,13 @@ import { Channel } from "./channel";
 export class Video {
 
     @PrimaryGeneratedColumn()
-    	id: number | undefined;
+    	id!: number;
 
-    @Column({type: "text"})
-    	title: string | undefined;
+    @Column({ type: "text" })
+    	title!: string;
 
-    @Column({type: "text"})
-    	description: string | undefined;
+    @Column({ type: "text" })
+    	description!: string;
 
     @ManyToOne(() => Channel, (chanell) => chanell.videos)
     @JoinColumn({ name: "chanell_id"})

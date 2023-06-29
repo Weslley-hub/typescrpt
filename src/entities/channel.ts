@@ -7,10 +7,10 @@ import { Video } from "./video";
 export class Channel {
 
     @PrimaryGeneratedColumn()
-    	id: number | undefined;
+    	id!: number;
 
-    @Column({type: "text"})
-    	name: string | undefined;
+    @Column({ type: "text" })
+    	name!: string;
 
     @ManyToOne(() => User, (user) => user.id)
     @JoinColumn({name: "id_user"}) 
