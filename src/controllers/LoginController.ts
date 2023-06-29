@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import { userRepository } from "../repositories/userRepository";
 import { BabRequestError } from "../helpers/api-erros";
 
+
 export class LoginController {
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -13,13 +14,13 @@ export class LoginController {
 		const user = await userRepository.findOneBy({ email });
 
 		if (!user) {
-			throw new BabRequestError("E-mail ou senha invalidos");
+			throw new BabRequestError("E-mail ou senha invalido(a)");
 		}
 
 		const verifyPassword = await bcrypt.compare(password, user.password);
 
 		if (!verifyPassword) {
-			throw new BabRequestError("E-mail ou senha invalidos");
+			throw new BabRequestError("E-mail ou senha invalido(a)");
 		}
 
 		const token = jwt.sign({ id: user.id}, process.env.JWT_PASSWORD ?? "", {expiresIn: 60*10});
@@ -32,4 +33,9 @@ export class LoginController {
 			token: token,
 		});
 	}
+
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	// async getProfile(req: Request, res: Response) {
+	// 	return res.json(req.user);
+	// }
 }
