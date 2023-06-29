@@ -36,6 +36,10 @@ export class ChannelController {
 
 		const channel = await channelRepository.findOneBy({ id: Number(idChannel) });
 
+		if (!title || !description) {
+			throw new BabRequestError("Todos os campos são obrigatório");
+		}
+
 		if (!channel) {
 			throw new NotFoundError("Canal não existe");
 		}
